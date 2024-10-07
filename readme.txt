@@ -3,6 +3,8 @@ Creadas las bases de datos en esta ruta puedes crear tu usuario en cualquiera de
 
 http://localhost:5173/createuser
 
+la contraseña por defaul que crea es 'Funval123'
+
 users:
 -- securykey.users definition
 
