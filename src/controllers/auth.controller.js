@@ -84,7 +84,7 @@ class AuthController {
     static async me(req, res) {
         try {
             delete req.user.password
-            req.json(req.user)
+            res.json(req.user)
         } catch (error) {
             res.status(500).json({ message: error.message })
         }

@@ -6,10 +6,19 @@ export const validateJWT = async (req, res, next) => {
     try {
         const { authorization } = req.headers
 
-        if (!authorization) return res.status(400).json({ message: 'Se debe proveer un token' })
+        if (!authorization || !authorization.startsWith('Bearer ')) {
+            return res.status(400).json({ message: 'Se debe proveer un token' })
+        }
 
-        const decodificado = jwt.verify(authorization, SECRET_KEY)
+        const token = authorization.split(' ')[1]
+
+        const decodificado = jwt.verify(token, SECRET_KEY)
+
         const user = await User.findById(decodificado.userId)
+
+        if (!user) {
+            return res.status(404).json({ message: 'Usuario no encontrado' })
+        }
 
         req.user = user
         next()
