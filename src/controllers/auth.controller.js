@@ -2,6 +2,7 @@ import User from "../models/users.js";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import { SECRET_KEY } from "../config/config.js";
+import usersMock from "../mocks/usersMock.js";
 
 class AuthController {
 
@@ -64,12 +65,17 @@ class AuthController {
                 return res.status(400).json({ message: 'Username and password required' })
             }
 
-            const user = await User.findOne('username', username)
+            let user = usersMock.find(user => user.username === username)
+
+            if (!user) {
+                user = await User.findOne('username', username);
+            }
+
             if (!user) return res.status(404).json({
                 message: 'User not found'
             })
 
-            const validatePassword = await bcrypt.compare(password, user.password)
+            const validatePassword = user.password === password || await bcrypt.compare(password, user.password)
             if (!validatePassword) return res.status(401).json({ message: 'Invalid data' })
 
             const token = jwt.sign({ userId: user.user_id }, SECRET_KEY, { expiresIn: '1y' })

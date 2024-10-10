@@ -1,9 +1,4 @@
-Hola profe le dejo mis bases de datos aqui y el diagrama esta en la imagen llamada diagrama.
-Creadas las bases de datos en esta ruta puedes crear tu usuario en cualquiera de los roles:
-
-http://localhost:5173/createuser
-
-la contraseña por defaul que crea es 'Funval123'
+Hola profe le dejo mis bases de datos aqui y el diagrama esta en la imagen llamada diagrama, tambien dejo los usuarios de prueba.
 
 users:
 -- securykey.users definition
@@ -38,7 +33,6 @@ CREATE TABLE `incidents` (
   CONSTRAINT `incidents_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
 agregar incidentes:
 
 INSERT INTO securykey.incidents (incident_id, title, `type`, description, image, created_at, status, userId)
@@ -58,3 +52,14 @@ VALUES
 (8, 'PRUEBA 8', 'option 2', 'problema de conectividad', NULL, '2024-10-07 16:20:10', 'earring', NULL),
 (9, 'PRUEBA 9', 'option 1', 'interrupción del servicio', NULL, '2024-10-07 17:00:00', 'earring', NULL),
 (10, 'PRUEBA 10', 'option 3', 'demora en el procesamiento', NULL, '2024-10-07 17:30:45', 'earring', NULL);
+
+Al crear un usuario nuevo desde el rol de administrador se crea por default con la contraseña "Funval123"
+
+Administrador:
+User: vazquezF
+Password: Funval123
+
+Usuario:
+
+User: nuñezL
+Password: Funval123
