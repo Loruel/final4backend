@@ -84,7 +84,7 @@ class IncidentController {
     static async updateIncident(req, res) {
         try {
 
-            const { title, type, description, image } = req.body
+            const { title, type, description, image, status } = req.body
             const incidentId = req.incident.incident_id
 
             const updateInci = await Incident.update({
@@ -92,7 +92,8 @@ class IncidentController {
                 title,
                 type,
                 description,
-                image
+                image,
+                status
             })
 
             if (!updateInci || updateInci.affectedRows === 0) {

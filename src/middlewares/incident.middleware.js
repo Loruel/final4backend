@@ -3,7 +3,7 @@ import Incident from "../models/incidents.js"
 export const validateIncidentID = async (req, res, next) => {
     try {
         const { id } = req.params
-        console.log('ID recibido:', id)
+
         const incident = await Incident.findById(id)
 
         if (!incident) {
