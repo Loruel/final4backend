@@ -83,11 +83,12 @@ class IncidentController {
 
     static async updateIncident(req, res) {
         try {
-            const { id } = req.params
+
             const { title, type, description, image } = req.body
+            const incidentId = req.incident.incident_id
 
             const updateInci = await Incident.update({
-                incident_id: id,
+                incident_id: incidentId,
                 title,
                 type,
                 description,
@@ -98,7 +99,7 @@ class IncidentController {
                 return res.status(404).json({ message: 'No existen datos que actualizar' })
             }
 
-            const incident = await Incident.findById(id)
+            const incident = await Incident.findById(incidentId)
             res.status(200).json({ message: 'incident updated successfully', data: incident })
         } catch (error) {
             res.status(500).json({ message: error.message })

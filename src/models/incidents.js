@@ -4,7 +4,7 @@ class Incident {
 
     static async findById(id) {
         const [incident] = await pool.execute(
-            'SELECT incident_id, title, type, description, image, created_at,status, userId FROM incidents WHERE incident_id = ?', [id]
+            'SELECT incident_id, title, type, description, image, created_at, status, userId FROM incidents WHERE incident_id = ?', [id]
         )
         return incident[0]
     }
@@ -68,7 +68,8 @@ class Incident {
         title,
         type,
         description,
-        image
+        image,
+        status
     }) {
 
         let query = 'UPDATE incidents SET'
@@ -95,9 +96,14 @@ class Incident {
             valuesUpdate.push(image)
         }
 
+        if (status) {
+            fieldsUpdate.push('status = ?')
+            valuesUpdate.push(status)
+        }
+
         if (fieldsUpdate.length === 0) return undefined
 
-        query += fieldsUpdate.join(',') + 'WHERE incident_id = ?'
+        query += ' ' + fieldsUpdate.join(',') + ' WHERE incident_id = ?'
 
         valuesUpdate.push(incident_id)
 
