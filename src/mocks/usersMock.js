@@ -1,4 +1,7 @@
-// usersMock.js
+import bcrypt from "bcrypt"
+
+const hashedPassword = await bcrypt.hash('Funval123', 10)
+
 const usersMock = [
     {
         user_id: 1,
@@ -6,7 +9,7 @@ const usersMock = [
         l_name: "Vazquez",
         username: "vazquezF",
         email: "vazquez@example.com",
-        password: "Funval123",
+        password: hashedPassword,
         image: "path/to/image.jpg",
         rol: "admin"
     },
@@ -16,7 +19,7 @@ const usersMock = [
         l_name: "Nuñez",
         username: "nuñezL",
         email: "nuñez@example.com",
-        password: "Funval123",
+        password: hashedPassword,
         image: "path/to/image.jpg",
         rol: "user"
     }
