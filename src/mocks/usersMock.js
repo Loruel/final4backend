@@ -4,7 +4,7 @@ const hashedPassword = await bcrypt.hash('Funval123', 10)
 
 const usersMock = [
     {
-        user_id: 1,
+        user_id: 500,
         f_name: "Francisco",
         l_name: "Vazquez",
         username: "vazquezF",
@@ -14,7 +14,7 @@ const usersMock = [
         rol: "admin"
     },
     {
-        user_id: 2,
+        user_id: 600,
         f_name: "Lorena",
         l_name: "Nuñez",
         username: "nuñezL",

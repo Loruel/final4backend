@@ -34,19 +34,19 @@ class Incident {
         type,
         description,
         status,
-        image/* ,
-        userId */
+        image,
+        userId
     }) {
 
         const requiredFields = [
             'title',
             'type',
             'status',
-            'description'/* ,
-            'userId' */
+            'description',
+            'userId'
         ]
 
-        const saveFields = [title, type, status, description/* , userId */]
+        const saveFields = [title, type, status, description, userId]
 
         if (image) {
             requiredFields.push('image')

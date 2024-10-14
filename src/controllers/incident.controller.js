@@ -55,6 +55,9 @@ class IncidentController {
     static async store(req, res) {
         try {
             const { title, type, description, image = null } = req.body
+            const userId = req.user ? req.user.user_id : req.body.userId
+
+            console.log('userId:', userId)
 
             if (!title || !type || !description) {
                 return res.status(400).json({ message: 'Incomplet data' })
@@ -62,15 +65,13 @@ class IncidentController {
 
             const statusDefault = 'earring'
 
-            /* const userIdDefault = req.user.userId */
-
             const incident = await Incident.create({
                 title,
                 type,
                 description,
                 status: statusDefault,
-                image: image || null/* ,
-                userId: userIdDefault */
+                image: image || null,
+                userId
             })
 
             res.status(201).json({ message: 'Incidet created successfully', data: incident })
