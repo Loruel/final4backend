@@ -1,10 +1,13 @@
 Al crear un usuario nuevo desde el rol de administrador se crea por default con la contraseña "Funval123"
 
 Administrador:
-User: vazquezF
-Password: Funval123
+User: fVAZQUEZ
+Password: contrasena
 
 Usuario:
+User: lNUNEZ
+Password: contrasena
 
-User: nuñezL
+
+User: pADARA
 Password: Funval123
